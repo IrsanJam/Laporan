@@ -15,7 +15,7 @@ Follow these steps to install and set up the KosKita API:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/IrsanJam/laporan.git
+   git clone https://github.com/IrsanJam/Laporan.git
    
 2. **Move to Cloned Repository Folder**
 
