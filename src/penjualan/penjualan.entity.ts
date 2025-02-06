@@ -1,5 +1,5 @@
 import { Column, ManyToOne, JoinColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Marketing } from "src/marketing/marketing.entity";
+import { Marketing } from "../marketing/marketing.entity";
 @Entity()
 export class Penjualan {
     @PrimaryGeneratedColumn()
