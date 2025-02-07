@@ -3,6 +3,7 @@ import { MarketingService } from './marketing.service';
 import { Marketing } from './marketing.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { HttpException } from '@nestjs/common';
 
 const mockMarketing = {name:'irsan'}
 const mockMarketingRepository = {
@@ -40,16 +41,12 @@ describe('MarketingService', () => {
       expect(repository.find).toHaveBeenCalled();
     })
 
+    it('should return error when not found', async () => {
+      (repository.find as jest.Mock).mockResolvedValueOnce([]);
+      await expect(service.findAll()).rejects.toThrow("Not Found");
+    });
   })
   
-  describe('findOne', () => {
-    it('should return a marketing', async () => {
-      const result = await service.findOne(1);
-      expect(result).toEqual(mockMarketing);
-      expect(repository.findOneBy).toHaveBeenCalledWith({ id: 1 });
-    })
-  })
-
   describe('create', () => {
     it('should create a marketing', async () => {
       const result = await service.create(mockMarketing);
@@ -65,6 +62,11 @@ describe('MarketingService', () => {
       expect(result).toEqual(mockMarketing);
       expect(repository.save).toHaveBeenCalled();
     })
+
+    it('should error to update', async () => {
+      (repository.findOneBy as jest.Mock).mockResolvedValueOnce(null);
+      await expect(service.update(100, {name:'irsani'})).rejects.toThrow(HttpException);
+    })
   })
 
   describe('delete', () => {
@@ -75,6 +77,25 @@ describe('MarketingService', () => {
         status: 200
       });
       expect(repository.remove).toHaveBeenCalledWith(mockMarketing);
+    })
+
+    it('should error to delete', async () => {
+      (repository.findOneBy as jest.Mock).mockResolvedValueOnce(null);
+      await expect(service.remove(100)).rejects.toThrow(HttpException);
+    })
+  })
+
+  describe('findOne', () => {
+    it('should return a marketing', async () => {
+      const result = await service.findOne(1);
+      expect(result).toEqual(mockMarketing);
+      expect(repository.findOneBy).toHaveBeenCalledWith({ id: 1 });
+    })
+
+    it('should return error when not found', async () => {
+      (repository.findOneBy as jest.Mock).mockResolvedValueOnce(null);
+      await expect(service.findOne(2)).rejects.toThrow("Marketing not found");
+      expect(repository.findOneBy).toHaveBeenCalledWith({ id: 2 });
     })
   })
 

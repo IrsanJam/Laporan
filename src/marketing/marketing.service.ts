@@ -10,7 +10,7 @@ export class MarketingService {
 
     async findAll() {
         const marketing = await this.MarketingRepository.find();
-        if(!marketing){
+        if(marketing.length === 0){
             throw new HttpException('Not Found', 404);
         }
         return marketing
@@ -48,6 +48,8 @@ export class MarketingService {
                 message: 'Deleted Successfully',
                 status: 200
             }    
+        }else{
+            throw new HttpException('ID Marketing not found', 404)
         }
         
     }
