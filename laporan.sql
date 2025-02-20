@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: laporan
+-- Host: localhost    Database: Real Time Chat
 -- ------------------------------------------------------
 -- Server version	9.2.0
 
@@ -131,7 +131,7 @@ INSERT INTO `penjualan` VALUES (13,'TRX001','2023-07-03 07:00:00',29870,10000000
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'laporan'
+-- Dumping routines for database 'Real Time Chat'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -1,8 +1,8 @@
 
 
 
-## LAPORAN API
-  <h1>Welcome to Laporan</h1>
+## Real Time Chat API
+  <h1>Welcome to Real Time Chat</h1>
 
 ## 🔮 Features
     - REST API
@@ -15,26 +15,26 @@ Follow these steps to install and set up the KosKita API:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/IrsanJam/Laporan.git
+   git clone https://github.com/IrsanJam/Real Time Chat.git
    
 2. **Move to Cloned Repository Folder**
 
     ```bash
-    cd LAPORAN
+    cd Real Time Chat
     
 3. **Update dependecies**
     
     ```bash
     npm install
 
-4. **Import Database laporan, location file in root**
+4. **Import Database Real Time Chat, location file in root**
     
     ```bash
-    laporan.sql
+    Real Time Chat.sql
 
     using mysql and check connection
 
-5. **Run Laporan**  
+5. **Run Real Time Chat**  
     ```bash
     npm run start: dev
 

@@ -3,20 +3,21 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+
 async function bootstrap() {
-
-
   const app = await NestFactory.create(AppModule);
-  
+
+  //config for sweager
   const config = new DocumentBuilder()
-    .setTitle('Laporan')
-    .setDescription('The Laporan API description')
+    .setTitle('Real Time Chat')
+    .setDescription('The Real Time Chat API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.enableCors();
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

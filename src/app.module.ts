@@ -1,15 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MarketingModule } from './marketing/marketing.module';
-import { PenjualanModule } from './penjualan/penjualan.module';
-import { PembayaranModule } from './pembayaran/pembayaran.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OmsetModule } from './omset/omset.module';
-import { Marketing } from './marketing/marketing.entity';
-import { Omset } from './omset/omset.entity';
-import { Pembayaran } from './pembayaran/pembayaran.entity';
-import { Penjualan } from './penjualan/penjualan.entity';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { MessageModule } from './message/message.module';
+import { ChannelModule } from './channel/channel.module';
+import { User } from './user/entities/user.entity';
 
 
 @Module({
@@ -19,10 +16,10 @@ import { Penjualan } from './penjualan/penjualan.entity';
     port: 3306,
     username: 'root',
     password: 'yourpassword',
-    database: 'laporan',
-    entities: [Marketing, Penjualan, Pembayaran, Omset],
+    database: 'db_chat',
+    entities: [User],
     synchronize: true
-  }), MarketingModule, PenjualanModule,  PembayaranModule, OmsetModule],
+  }),AuthModule, UserModule, MessageModule, ChannelModule],
   controllers: [AppController],
   providers: [AppService],
 })
